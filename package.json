@@ -22,7 +22,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "server:dec": "nodemon server.js",
+    "server:dev": "nodemon server.js",
     "server:prod": "node server.js",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

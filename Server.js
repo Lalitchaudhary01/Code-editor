@@ -6,7 +6,7 @@ const { Server } = require("socket.io");
 const server = http.createServer(app);
 
 const io = new Server(server);
-io.on("connection", (soclet) => {
+io.on("connection", (socket) => {
   console.log("socket connected", socket.id);
 });
 
