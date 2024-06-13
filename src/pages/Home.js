@@ -8,7 +8,6 @@ const Home = () => {
 
   const [roomId, setRoomId] = useState("");
   const [username, setUsername] = useState("");
-
   const createNewRoom = (e) => {
     e.preventDefault();
     const id = uuidV4();
@@ -35,7 +34,6 @@ const Home = () => {
       joinRoom();
     }
   };
-
   return (
     <div className="homePageWrapper">
       <div className="formWrapper">
@@ -67,12 +65,7 @@ const Home = () => {
           </button>
           <span className="createInfo">
             If you don't have an invite then create &nbsp;
-            <a
-              onClick={createNewRoom}
-              href="#"
-              className="createNewBtn"
-              style={{ cursor: "pointer" }}
-            >
+            <a onClick={createNewRoom} href="" className="createNewBtn">
               new room
             </a>
           </span>
@@ -81,7 +74,7 @@ const Home = () => {
       <footer>
         <h4>
           Built with 💛 &nbsp; by &nbsp;
-          <a href="https://github.com/codersgyan">Lalit Chaudhary</a>
+          <a href="https://github.com/codersgyan">Coder's Gyan</a>
         </h4>
       </footer>
     </div>
