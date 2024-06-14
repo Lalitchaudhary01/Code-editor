@@ -4,25 +4,27 @@ const http = require("http");
 const path = require("path");
 const { Server } = require("socket.io");
 const ACTIONS = require("./src/Actions");
+const dotenv = require("dotenv");
+
+// Load environment variables from .env file
+dotenv.config();
 
 const server = http.createServer(app);
 const io = new Server(server);
 
-app.use(express.static("build"));
+app.use(express.static(path.join(__dirname, "build")));
+
 app.use((req, res, next) => {
   res.sendFile(path.join(__dirname, "build", "index.html"));
 });
 
 const userSocketMap = {};
 function getAllConnectedClients(roomId) {
-  // Map
   return Array.from(io.sockets.adapter.rooms.get(roomId) || []).map(
-    (socketId) => {
-      return {
-        socketId,
-        username: userSocketMap[socketId],
-      };
-    }
+    (socketId) => ({
+      socketId,
+      username: userSocketMap[socketId],
+    })
   );
 }
 
@@ -59,7 +61,6 @@ io.on("connection", (socket) => {
       });
     });
     delete userSocketMap[socket.id];
-    socket.leave();
   });
 });
 
