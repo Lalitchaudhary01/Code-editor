@@ -62,13 +62,11 @@ const EditorPage = () => {
     };
     init();
     return () => {
-      if (socketRef.current) {
-        socketRef.current.disconnect();
-        socketRef.current.off(ACTIONS.JOINED);
-        socketRef.current.off(ACTIONS.DISCONNECTED);
-      }
+      socketRef.current.disconnect();
+      socketRef.current.off(ACTIONS.JOINED);
+      socketRef.current.off(ACTIONS.DISCONNECTED);
     };
-  }, [reactNavigator, location.state?.username, roomId]);
+  }, []);
 
   async function copyRoomId() {
     try {
